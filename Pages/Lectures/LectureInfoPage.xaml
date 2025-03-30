@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="AcademiApp.Pages.Lectures.LectureInfoPage"
+             Shell.BackgroundColor="#16a34a">
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#16a34a"/>
+    </Page.Behaviors>
+
+    <Shell.TitleView>
+        <Label
+            Text="Detalhes da disciplina"
+            FontFamily="RobotoMonoBold"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            FontSize="Medium"/>
+    </Shell.TitleView>
+
+    <VerticalStackLayout Padding="10">
+        <Frame Margin="0,5" Padding="15" HasShadow="True">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="{Binding SelectedLecture.LectureName}" FontFamily="LatoBold" FontSize="20"  VerticalTextAlignment="Center"/>
+                <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Margin="0,15">
+                    <VerticalStackLayout>
+                        <Label Text="Código" TextColor="#6b6565" FontSize="18" />
+                        <Label Text="{Binding SelectedLecture.LectureCode}" FontSize="18" />
+                    </VerticalStackLayout>
+                </FlexLayout>
+                <Label Text="Descrição" TextColor="#6b6565" FontSize="18" />
+                <Label Text="{Binding SelectedLecture.LectureDescription}" FontSize="18" />
+                <FlexLayout AlignItems="Center" JustifyContent="End" Margin="0,30">
+                    <Button Margin="0,0,5,0" WidthRequest="120" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" ImageSource="bin.png" Text="Excluir" TextColor="#000" FontSize="16" ContentLayout="Left,5"/>
+                    <Button WidthRequest="120" BackgroundColor="#18181b" ImageSource="pencil.png" Text="Editar" FontSize="16" Clicked="EditLectureEvent"/>
+                </FlexLayout>
+
+                <Label Text="Cursos vinculados" FontSize="18" FontFamily="LatoBold" HorizontalOptions="Center" Margin="0, 15"/>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

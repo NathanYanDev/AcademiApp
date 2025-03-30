@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AcademiApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AcademiApp"
+    xmlns:pages="clr-namespace:AcademiApp.Pages"
+    xmlns:courses="clr-namespace:AcademiApp.Pages.Courses"
+    xmlns:lectures="clr-namespace:AcademiApp.Pages.Lectures"
+    xmlns:period="clr-namespace:AcademiApp.Pages.Period"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <Image Source="logo.png"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="10" Background="#cececd">
+            <Label Text="&#169; 2025 AcademiApp - Sistema de gestão acadêmica" FontSize="11" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+    
+    <FlyoutItem Title="Menu" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="home.png"
+        />
+
+        <ShellContent
+            Title="Cursos"
+            ContentTemplate="{DataTemplate courses:ListCoursesPage}"
+            Icon="graduationcap.png"
+            Route="ListCoursesPage"
+        />
+
+        <ShellContent
+            Title="Disciplinas"
+            ContentTemplate="{DataTemplate lectures:ListLecturesPage}"
+            Icon="book.png"
+            Route="ListClassesPage"
+        />
+
+        <ShellContent
+            Title="Períodos"
+            ContentTemplate="{DataTemplate period:ListPeriodsPage}"
+            Icon="calendar.png"
+            Route="ListPeriodsPage"
+        />
+
+        <ShellContent
+            Title="Sobre"
+            ContentTemplate="{DataTemplate pages:AboutPage}"
+            Icon="info.png"
+            Route="AboutPage"
+        />
+    </FlyoutItem>
+</Shell>

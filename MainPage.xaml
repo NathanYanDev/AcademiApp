@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="AcademiApp.MainPage"
+             Shell.BackgroundColor="#1d4ed7"
+             >
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#1d4ed7"/>
+    </Page.Behaviors>
+    
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Image Source="graduationcapwhite.png" WidthRequest="32" HeightRequest="32" Aspect="AspectFit"/>
+            <Label
+                Text="AcademiApp"
+                FontFamily="RobotoMonoBold"
+                TextColor="White"
+                VerticalTextAlignment="Center"
+                VerticalOptions="Center"
+                HeightRequest="50"
+                FontSize="Medium" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <VerticalStackLayout VerticalOptions="Center" Padding="10">
+        <Frame BackgroundColor="#1d4ed7" HeightRequest="100" WidthRequest="100" CornerRadius="100">
+            <Image Source="graduationcapwhite.png" HeightRequest="100" WidthRequest="100" />    
+        </Frame>
+        <Label Text="AcademiApp" HorizontalOptions="Center" FontFamily="RobotoMonoBold" FontSize="35" TextColor="#2548d6"/>
+        <Label Text="Sistema de gestão acadêmica" HorizontalOptions="Center" FontFamily="RobotoMonoRegular" TextColor="#6f6f66"/>
+        <Grid RowSpacing="20" Margin="20.0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnNavCourses" ImageSource="graduationcap.png" BackgroundColor="White" BorderColor="#6f6f66" BorderWidth="1" WidthRequest="150" HeightRequest="100" Text="Cursos" TextColor="Black" FontSize="18" ContentLayout="Top,5" Grid.Row="0" Grid.Column="0" Clicked="btnNavCourses_Clicked"/>
+            <Button x:Name="btnNavClasses" ImageSource="book.png" BackgroundColor="White" BorderColor="#6f6f66" BorderWidth="1" WidthRequest="150" HeightRequest="100" Text="Disciplinas" TextColor="Black" FontSize="18" ContentLayout="Top,5" Grid.Row="0" Grid.Column="1" Clicked="btnNavClasses_Clicked"/>
+            <Button x:Name="btnNavPeriods" ImageSource="calendar.png" BackgroundColor="White" BorderColor="#6f6f66" BorderWidth="1" WidthRequest="150" HeightRequest="100" Text="Períodos" TextColor="Black" FontSize="18" ContentLayout="Top,5" Grid.Row="1" Grid.Column="0" Clicked="btnNavPeriods_Clicked"/>
+            <Button x:Name="btnNavAbout" ImageSource="info.png" BackgroundColor="White" BorderColor="#6f6f66" BorderWidth="1" WidthRequest="150" HeightRequest="100" Text="Sobre" TextColor="Black" FontSize="18" ContentLayout="Top,5" Grid.Row="1" Grid.Column="1" Clicked="btnNavAbout_Clicked"/>
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>

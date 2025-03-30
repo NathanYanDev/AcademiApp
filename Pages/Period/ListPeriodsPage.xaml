@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="AcademiApp.Pages.Period.ListPeriodsPage"
+             xmlns:local="clr-namespace:AcademiApp.Pages.Period"             
+             Shell.BackgroundColor="#334155">
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#334155"/>
+    </Page.Behaviors>
+
+    <ContentPage.BindingContext>
+        <local:PeriodViewModel/>
+    </ContentPage.BindingContext>
+
+    <Shell.TitleView>
+        <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
+            <Label
+            Text="Períodos"
+            FontFamily="RobotoMonoBold"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            FontSize="Medium" 
+        />
+            <Button BackgroundColor="Transparent" ImageSource="plus.png" Clicked="GoToAddPeriodPage"/>
+        </FlexLayout>
+    </Shell.TitleView>
+
+
+    <VerticalStackLayout Padding="10">
+        <Frame 
+            CornerRadius="10" 
+            HeightRequest="50"
+            Margin="0,0,0,10"
+            Padding="5"
+        >
+            <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Padding="10,0">
+                <Entry Placeholder="Pesquise um período..." WidthRequest="330" />
+                <ImageButton Source="search.png" WidthRequest="24"/>
+            </FlexLayout>
+        </Frame>
+
+        <ListView ItemsSource="{Binding Periods}" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Period">
+                    <ViewCell>
+                        <Frame Margin="0,5" Padding="15">
+                            <VerticalStackLayout Spacing="5">
+                                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Wrap="Wrap">
+                                    <Label Text="{Binding PeriodName}" FontFamily="LatoBold" FontSize="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                    <Frame Padding="0" BorderColor="Transparent">
+                                        <Label Text="{Binding PeriodYear}" FontSize="12" FontFamily="LatoBold" BackgroundColor="#e2e8f0" TextColor="#5f6978" Padding="10"/>
+                                    </Frame>
+                                </FlexLayout>
+                                <Label Text="{Binding PeriodCode, StringFormat='Código: {0}'}" TextColor="#6b6565" FontSize="16" />
+                            </VerticalStackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeriodViewModel}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

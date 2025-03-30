@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiApp.Pages.AboutPage"
+             Shell.BackgroundColor="#1373f4">
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#1373f4"/>
+    </Page.Behaviors>
+
+    <Shell.TitleView>
+        <Label
+            Text="Sobre"
+            FontFamily="RobotoMonoBold"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            FontSize="Medium" 
+        />
+    </Shell.TitleView>
+
+    <VerticalStackLayout Padding="30,10" Spacing="5">
+        <Frame Padding="0" CornerRadius="200" HorizontalOptions="Center" BorderColor="White">
+            <Image Source="avatar.jpg" WidthRequest="200" HeightRequest="200" Aspect="AspectFit"/>
+        </Frame>
+        <Label Text="Nathan Yan" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <Label Text="2402103" FontSize="22" FontAttributes="Bold" TextColor="#4b4b4b" HorizontalTextAlignment="Center"/>
+        <Label Text="AcademiApp &#169; - Aplicativo criado para a disciplina de Desenvolvimento mobile Android ministrada pelo Juliano Marçal" Margin="0,30,0,0" FontSize="16"/>
+        <Label Text="Contatos" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,15"/>
+
+        <FlexLayout AlignItems="Center" JustifyContent="SpaceAround" Margin="0,10">
+            <ImageButton Source="linkedin.png"  WidthRequest="80" Clicked="OnLinkedinClicked"/>
+            <ImageButton Source="github.png" WidthRequest="80" Clicked="OnGithubClicked"/>
+        </FlexLayout>
+    </VerticalStackLayout>
+</ContentPage>
