@@ -7,7 +7,7 @@
     xmlns:pages="clr-namespace:AcademiApp.Pages"
     xmlns:courses="clr-namespace:AcademiApp.Pages.Courses"
     xmlns:lectures="clr-namespace:AcademiApp.Pages.Lectures"
-    xmlns:period="clr-namespace:AcademiApp.Pages.Period"
+    xmlns:period="clr-namespace:AcademiApp.Pages.Periods"
     Shell.FlyoutBehavior="Flyout">
 
     <Shell.FlyoutHeader>
@@ -25,6 +25,7 @@
             Title="Home"
             ContentTemplate="{DataTemplate local:MainPage}"
             Icon="home.png"
+            Route="MainPage"
         />
 
         <ShellContent
@@ -53,6 +54,13 @@
             ContentTemplate="{DataTemplate pages:AboutPage}"
             Icon="info.png"
             Route="AboutPage"
+        />
+
+        <ShellContent
+            Title="Cadastro"
+            ContentTemplate="{DataTemplate pages:UserRegisterPage}"
+            Icon="register.png"
+            Route="UserRegisterPage"
         />
     </FlyoutItem>
 </Shell>

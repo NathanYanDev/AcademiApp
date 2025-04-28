@@ -11,10 +11,6 @@
         <mct:StatusBarBehavior StatusBarColor="#1d4ed7"/>
     </Page.Behaviors>
 
-    <ContentPage.BindingContext>
-        <local:CourseViewModel/>
-    </ContentPage.BindingContext>
-
     <Shell.TitleView>
         <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
             <Label
@@ -43,9 +39,9 @@
             </FlexLayout>
         </Frame>
 
-        <ListView ItemsSource="{Binding Courses}" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+        <ListView x:Name="lstCourses" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Course">
+                <DataTemplate>
                     <ViewCell>
                         <Frame Margin="0,5" Padding="15">
                             <VerticalStackLayout Spacing="5">

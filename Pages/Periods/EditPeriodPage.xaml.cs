@@ -1,4 +1,5 @@
-namespace AcademiApp.Pages.Period;
+namespace AcademiApp.Pages.Periods;
+using AcademiApp.Models;
 
 public partial class EditPeriodPage : ContentPage
 {

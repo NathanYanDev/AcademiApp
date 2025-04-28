@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="AcademiApp.Pages.Period.EditPeriodPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademiApp.Pages.Periods.AddPeriodPage"
              Shell.BackgroundColor="#334155">
 
     <Page.Behaviors>
@@ -10,31 +10,28 @@
     </Page.Behaviors>
 
     <Shell.TitleView>
-        <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
-            <Label
-                Text="Editar período"
-                FontFamily="RobotoMonoBold"
-                TextColor="White"
-                VerticalTextAlignment="Center"
-                VerticalOptions="Center"
-                HeightRequest="50"
-                FontSize="Medium"
-            />
-            <ImageButton Source="save.png" BackgroundColor="Transparent" Margin="0,0,10,0" WidthRequest="24"/>
-        </FlexLayout>
+        <Label
+            Text="Adicionar período"
+            FontFamily="RobotoMonoBold"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            FontSize="Medium"
+        />
     </Shell.TitleView>
 
     <VerticalStackLayout Padding="10">
         <Frame Margin="0,5" Padding="15" HasShadow="True">
             <VerticalStackLayout>
-                <Label Text="Editar período" FontSize="24" FontFamily="LatoBold" Margin="0,0,0,15"/>
+                <Label Text="Adicionar período" FontSize="24" FontFamily="LatoBold" Margin="0,0,0,15"/>
                 <Label Text="Nome do período *" FontSize="16" FontAttributes="Bold" />
-                <Entry Text="{Binding EditPeriod.PeriodName}" Margin="0,0,0,10"/>
+                <Entry Margin="0,0,0,10" x:Name="etrPeriodName"/>
                 <Label Text="Código do período *" FontSize="16" FontAttributes="Bold"/>
-                <Entry Text="{Binding EditPeriod.PeriodCode}" Margin="0,0,0,10"/>
+                <Entry Margin="0,0,0,10" x:Name="etrPeriodCode"/>
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" HeightRequest="50" >
                     <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold"/>
-                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" />
+                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" Clicked="AddPeriodButton_Clicked"/>
                 </FlexLayout>
             </VerticalStackLayout>
         </Frame>

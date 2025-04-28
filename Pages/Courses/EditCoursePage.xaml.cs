@@ -1,4 +1,5 @@
 namespace AcademiApp.Pages.Courses;
+using AcademiApp.Models;
 
 public partial class EditCoursesPage : ContentPage
 {
