@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="AcademiApp.Pages.UserRegisterPage"
+             Shell.BackgroundColor="#762ad0"
+             >
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#762ad0"/>
+    </Page.Behaviors>
+
+    <Shell.TitleView>
+        <Label
+            Text="Cadastro de usuário"
+            FontFamily="RobotoMonoBold"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            FontSize="Medium" 
+        />
+    </Shell.TitleView>
+
+    <VerticalStackLayout Padding="30,10" Spacing="5">
+        <Label Text="CPF" />
+        <Entry x:Name="cpfEntry" Placeholder="Digite seu CPF..." />
+        <Label Text="Nome" />
+        <Entry x:Name="nameEntry" Placeholder="Digite seu nome..." />
+        <Label Text="Data de nascimento" />
+        <DatePicker x:Name="birthDatePicker" Format="dd/MM/yyyy" MinimumDate="01/01/1950" MaximumDate="01/01/2025" Date="01/01/2001"/>
+        <Label Text="Email" />
+        <Entry x:Name="emailEntry" Placeholder="Digite seu email..." />
+        <Label Text="Telefone"/>
+        <Entry x:Name="phoneNumberEntry" Placeholder="Digite seu telefone..." Keyboard="Telephone"/>
+        <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Margin="0,20">
+            <Button Text="Cadastrar" BackgroundColor="#008236" TextColor="White"/>
+            <Button Text="Voltar" Clicked="OnBackButtonClicked" />
+        </FlexLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -2,7 +2,7 @@
 using AcademiApp.Pages;
 using AcademiApp.Pages.Lectures;
 using AcademiApp.Pages.Courses;
-using AcademiApp.Pages.Period;
+using AcademiApp.Pages.Periods;
 
 
 public partial class MainPage : ContentPage

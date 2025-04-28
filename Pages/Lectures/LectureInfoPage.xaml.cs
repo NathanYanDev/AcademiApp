@@ -1,4 +1,5 @@
 namespace AcademiApp.Pages.Lectures;
+using AcademiApp.Models;
 
 public partial class LectureInfoPage : ContentPage
 {

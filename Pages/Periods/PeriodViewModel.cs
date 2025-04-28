@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using AcademiApp.Models;
 
-namespace AcademiApp.Pages.Period
+namespace AcademiApp.Pages.Periods
 {
     class PeriodViewModel
     {
@@ -18,20 +19,11 @@ namespace AcademiApp.Pages.Period
         {
             ItemClickedCommand = new Command<Period>(OnItemClicked);
             Periods = new ObservableCollection<Period>();
-            OnLoadingTestData();
         }
 
         public async void OnItemClicked(Period selectedPeriod)
         {
             await Shell.Current.Navigation.PushAsync(new PeriodInfoPage(selectedPeriod));
-        }
-
-        private void OnLoadingTestData()
-        {
-            Periods.Add(new Period { PeriodCode = "01-2025", PeriodName = "1º Semestre / 2025", PeriodYear = "2025" });
-            Periods.Add(new Period { PeriodCode = "02-2025", PeriodName = "2º Semestre / 2025", PeriodYear = "2025" });
-            Periods.Add(new Period { PeriodCode = "01-2026", PeriodName = "1º Semestre / 2026", PeriodYear = "2026" });
-            Periods.Add(new Period { PeriodCode = "02-2025", PeriodName = "2º Semestre / 2026", PeriodYear = "2026" });
         }
     }
 }
