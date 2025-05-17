@@ -12,7 +12,19 @@ public partial class AddPeriodPage : ContentPage
 	{
 		try
 		{
-			Period period = new()
+			if (string.IsNullOrEmpty(etrPeriodName.Text))
+			{
+				await DisplayAlert("Erro", "O nome do período é obrigatório.", "OK");
+				return;
+			}
+
+			if (string.IsNullOrEmpty(etrPeriodCode.Text))
+			{
+                await DisplayAlert("Erro", "O código do período é obrigatório.", "OK");
+                return;
+            }
+
+            Period period = new Period
             {
 				Name = etrPeriodName.Text,
 				Code = etrPeriodCode.Text,

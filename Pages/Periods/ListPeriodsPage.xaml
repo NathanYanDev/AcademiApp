@@ -33,10 +33,7 @@
             Margin="0,0,0,10"
             Padding="5"
         >
-            <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Padding="10,0">
-                <Entry Placeholder="Pesquise um período..." WidthRequest="330" />
-                <ImageButton Source="search.png" WidthRequest="24"/>
-            </FlexLayout>
+            <SearchBar x:Name="searchBar" Placeholder="Pesquise um período..." TextChanged="searchPeriod" />
         </Frame>
 
         <ListView x:Name="lstPeriods" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
@@ -49,7 +46,7 @@
                                 <Label Text="{Binding Code, StringFormat='Código: {0}'}" TextColor="#6b6565" FontSize="16" />
                             </VerticalStackLayout>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeriodViewModel}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListPeriodsPage}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>
                             </Frame.GestureRecognizers>
                         </Frame>
                     </ViewCell>

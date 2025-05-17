@@ -23,17 +23,17 @@
     <VerticalStackLayout Padding="10">
         <Frame Margin="0,5" Padding="15" HasShadow="True">
             <VerticalStackLayout Spacing="5">
-                <Label Text="{Binding SelectedLecture.LectureName}" FontFamily="LatoBold" FontSize="20"  VerticalTextAlignment="Center"/>
+                <Label Text="{Binding SelectedLecture.Name}" FontFamily="LatoBold" FontSize="20"  VerticalTextAlignment="Center"/>
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Margin="0,15">
                     <VerticalStackLayout>
                         <Label Text="Código" TextColor="#6b6565" FontSize="18" />
-                        <Label Text="{Binding SelectedLecture.LectureCode}" FontSize="18" />
+                        <Label Text="{Binding SelectedLecture.Code}" FontSize="18" />
                     </VerticalStackLayout>
                 </FlexLayout>
                 <Label Text="Descrição" TextColor="#6b6565" FontSize="18" />
-                <Label Text="{Binding SelectedLecture.LectureDescription}" FontSize="18" />
+                <Label Text="{Binding SelectedLecture.Description}" FontSize="18" />
                 <FlexLayout AlignItems="Center" JustifyContent="End" Margin="0,30">
-                    <Button Margin="0,0,5,0" WidthRequest="120" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" ImageSource="bin.png" Text="Excluir" TextColor="#000" FontSize="16" ContentLayout="Left,5"/>
+                    <Button Margin="0,0,5,0" WidthRequest="120" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" ImageSource="bin.png" Text="Excluir" TextColor="#000" FontSize="16" ContentLayout="Left,5" Clicked="DeleteLectureEvent"/>
                     <Button WidthRequest="120" BackgroundColor="#18181b" ImageSource="pencil.png" Text="Editar" FontSize="16" Clicked="EditLectureEvent"/>
                 </FlexLayout>
 

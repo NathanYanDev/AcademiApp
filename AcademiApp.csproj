@@ -56,6 +56,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Pages\Courses\CourseViewModel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="hs_err_pid14052.log" />
 	  <None Remove="hs_err_pid28824.log" />
 	  <None Remove="replay_pid14052.log" />
@@ -111,9 +115,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Periods\PeriodInfoPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\UserRegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

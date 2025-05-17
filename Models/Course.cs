@@ -17,8 +17,7 @@ namespace AcademiApp.Models
         public string Code { get; set; }
         public string Description { get; set; }
 
-        [ForeignKey("Period")]
-        public int PeriodId { get; set; }
-        public Period Period { get; set; }
+        [Ignore]
+        public List<Lecture> Lectures { get; set; } = new List<Lecture>();
     }
 }

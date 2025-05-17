@@ -30,4 +30,23 @@ public partial class PeriodInfoPage : ContentPage
     {
         await Navigation.PushAsync(new EditPeriodPage(SelectedPeriod));
     }
+
+    private async void DeletePeriodEvent(object sender, EventArgs e)
+    {
+        try
+        {
+            bool confirmExclusion = await DisplayAlert("Confirmação", "Confirma a remoção?", "Sim", "Não");
+
+            if (confirmExclusion)
+            {
+                App.PeriodHelper.DeletePeriod(SelectedPeriod.Id);
+
+                await Shell.Current.GoToAsync("..");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", "Ocorreu um erro enquanto deletava o período: " + ex.Message, "OK");
+        }
+    }
 }

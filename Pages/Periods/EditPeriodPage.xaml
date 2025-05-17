@@ -20,7 +20,7 @@
                 HeightRequest="50"
                 FontSize="Medium"
             />
-            <ImageButton Source="save.png" BackgroundColor="Transparent" Margin="0,0,10,0" WidthRequest="24"/>
+            <ImageButton Source="save.png" BackgroundColor="Transparent" Margin="0,0,10,0" WidthRequest="24" Clicked="SaveEditedChanges"/>
         </FlexLayout>
     </Shell.TitleView>
 
@@ -29,12 +29,12 @@
             <VerticalStackLayout>
                 <Label Text="Editar período" FontSize="24" FontFamily="LatoBold" Margin="0,0,0,15"/>
                 <Label Text="Nome do período *" FontSize="16" FontAttributes="Bold" />
-                <Entry Text="{Binding EditPeriod.PeriodName}" Margin="0,0,0,10"/>
+                <Entry Text="{Binding EditPeriod.Name}" Margin="0,0,0,10" x:Name="etrPeriodName"/>
                 <Label Text="Código do período *" FontSize="16" FontAttributes="Bold"/>
-                <Entry Text="{Binding EditPeriod.PeriodCode}" Margin="0,0,0,10"/>
+                <Entry Text="{Binding EditPeriod.Code}" Margin="0,0,0,10" x:Name="etrPeriodCode"/>
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" HeightRequest="50" >
-                    <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold"/>
-                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" />
+                    <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold" Clicked="ReturnPage"/>
+                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" Clicked="SaveEditedChanges"/>
                 </FlexLayout>
             </VerticalStackLayout>
         </Frame>

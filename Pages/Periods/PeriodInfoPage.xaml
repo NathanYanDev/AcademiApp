@@ -23,15 +23,15 @@
     <VerticalStackLayout Padding="10">
         <Frame Margin="0,5" Padding="15" HasShadow="True">
             <VerticalStackLayout Spacing="5">
-                <Label Text="{Binding SelectedPeriod.PeriodName}" FontFamily="LatoBold" FontSize="20"  VerticalTextAlignment="Center"/>
+                <Label Text="{Binding SelectedPeriod.Name}" FontFamily="LatoBold" FontSize="20"  VerticalTextAlignment="Center"/>
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Margin="0,15">
                     <VerticalStackLayout>
                         <Label Text="Código" TextColor="#6b6565" FontSize="18" />
-                        <Label Text="{Binding SelectedPeriod.PeriodCode}" FontSize="18" />
+                        <Label Text="{Binding SelectedPeriod.Code}" FontSize="18" />
                     </VerticalStackLayout>
                 </FlexLayout>
                 <FlexLayout AlignItems="Center" JustifyContent="End" Margin="0,30">
-                    <Button Margin="0,0,5,0" WidthRequest="120" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" ImageSource="bin.png" Text="Excluir" TextColor="#000" FontSize="16" ContentLayout="Left,5"/>
+                    <Button Margin="0,0,5,0" WidthRequest="120" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" ImageSource="bin.png" Text="Excluir" TextColor="#000" FontSize="16" ContentLayout="Left,5" Clicked="DeletePeriodEvent"/>
                     <Button WidthRequest="120" BackgroundColor="#18181b" ImageSource="pencil.png" Text="Editar" FontSize="16" Clicked="EditPeriodEvent"/>
                 </FlexLayout>
             </VerticalStackLayout>

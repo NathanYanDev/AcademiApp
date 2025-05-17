@@ -20,7 +20,7 @@
                 HeightRequest="50"
                 FontSize="Medium"
             />
-            <ImageButton Source="save.png" BackgroundColor="Transparent" Margin="0,0,10,0" WidthRequest="24"/>
+            <ImageButton Source="save.png" BackgroundColor="Transparent" Margin="0,0,10,0" WidthRequest="24" Clicked="SaveEditedChanges"/>
         </FlexLayout>
     </Shell.TitleView>
 
@@ -29,20 +29,21 @@
             <VerticalStackLayout>
                 <Label Text="Editar disciplina" FontSize="24" FontFamily="LatoBold" Margin="0,0,0,15"/>
                 <Label Text="Nome do disciplina *" FontSize="16" FontAttributes="Bold" />
-                <Entry Text="{Binding EditLecture.LectureName}" Margin="0,0,0,10"/>
+                <Entry Text="{Binding EditLecture.Name}" Margin="0,0,0,10" x:Name="etrLectureName"/>
                 <Label Text="Código do disciplina *" FontSize="16" FontAttributes="Bold"/>
-                <Entry Text="{Binding EditLecture.LectureCode}" Margin="0,0,0,10"/>
+                <Entry Text="{Binding EditLecture.Code}" Margin="0,0,0,10" x:Name="etrLectureCode"/>
                 <Label Text="Descrição do disciplina *" FontSize="16" FontAttributes="Bold"/>
                 <Editor 
-                    Text="{Binding EditLecture.LectureDescription}"
+                    Text="{Binding EditLecture.Description}"
                     AutoSize="TextChanges"
                     FontSize="14"
                     Margin="0,0,0,10"
+                    x:Name="editorLectureDescription"
                 />
 
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" HeightRequest="50" >
-                    <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold"/>
-                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" />
+                    <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold" Clicked="ReturnPage"/>
+                    <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" Clicked="SaveEditedChanges"/>
                 </FlexLayout>
             </VerticalStackLayout>
         </Frame>

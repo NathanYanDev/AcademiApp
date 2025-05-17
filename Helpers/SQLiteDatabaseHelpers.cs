@@ -18,6 +18,7 @@ namespace AcademiApp.Helpers
             _conn.CreateTableAsync<Course>().Wait();
             _conn.CreateTableAsync<Lecture>().Wait();
             _conn.CreateTableAsync<Period>().Wait();
+            _conn.CreateTableAsync<CourseLecture>().Wait();
         }
 
         public int Insert<T>(T item)

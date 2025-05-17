@@ -32,23 +32,20 @@
             Margin="0,0,0,10"
             Padding="5"
         >
-            <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" Padding="10,0">
-                <Entry Placeholder="Pesquisar disciplinas..." WidthRequest="330" />
-                <ImageButton Source="search.png" WidthRequest="24"/>
-            </FlexLayout>
+            <SearchBar x:Name="searchBar" Placeholder="Pesquise uma disciplina..." TextChanged="searchLecture" />
         </Frame>
 
-        <ListView ItemsSource="{Binding Lectures}" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+        <ListView x:Name="lstLectures" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Frame Margin="0,5" Padding="15">
                             <VerticalStackLayout Spacing="5">
-                                <Label Text="{Binding LectureName}" FontFamily="LatoBold" FontSize="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-                                <Label Text="{Binding LectureCode, StringFormat='Código: {0}'}" TextColor="#6b6565" FontSize="16" />
+                                <Label Text="{Binding Name}" FontFamily="LatoBold" FontSize="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Code, StringFormat='Código: {0}'}" TextColor="#6b6565" FontSize="16" />
                             </VerticalStackLayout>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:LectureViewModel}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListLecturesPage}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>
                             </Frame.GestureRecognizers>
                         </Frame>
                     </ViewCell>

@@ -36,5 +36,9 @@ namespace AcademiApp.Helpers
         {
             _db.Delete<Period>(id);
         }
+        public List<Period> SearchPeriodByName(string name)
+        {
+            return _db.Search<Period>(name);
+        }
     }
 }

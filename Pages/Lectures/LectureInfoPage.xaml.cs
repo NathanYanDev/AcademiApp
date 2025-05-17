@@ -30,4 +30,21 @@ public partial class LectureInfoPage : ContentPage
     {
         await Navigation.PushAsync(new EditLecturePage(_selectedLecture));
     }
+
+    private async void DeleteLectureEvent(object sender, EventArgs e)
+    {
+        try
+        {
+            bool confirmExclusion = await DisplayAlert("Confirmação", "Confirma a remoção?", "Sim", "Não");
+            if (confirmExclusion)
+            {
+                App.LectureHelper.DeleteLecture(SelectedLecture.Id);
+                await Shell.Current.GoToAsync("..");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
 }
