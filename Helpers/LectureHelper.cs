@@ -41,5 +41,16 @@ namespace AcademiApp.Helpers
         {
             return _db.Search<Lecture>(name);
         }
+
+        public Lecture SearchById(int id)
+        {
+            return _db.GetById<Lecture>(id);
+        }
+
+        public List<Lecture> GetLecturesByCourseId(int courseId)
+        {
+            string sql = $"SELECT * FROM Lecture WHERE Id IN (SELECT LectureId FROM CourseLecture WHERE CourseId = {courseId})";
+            return _db.SearchByQuery<Lecture>(sql);
+        }
     }
 }

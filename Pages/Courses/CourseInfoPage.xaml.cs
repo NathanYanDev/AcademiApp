@@ -1,8 +1,10 @@
 namespace AcademiApp.Pages.Courses;
 using AcademiApp.Models;
+using System.Collections.ObjectModel;
 
 public partial class CourseInfoPage : ContentPage
 {
+    ObservableCollection<Lecture> lectures = new();
     private Course _selectedCourse;
 
     public Course SelectedCourse
@@ -18,9 +20,34 @@ public partial class CourseInfoPage : ContentPage
     public CourseInfoPage(Course selectedCourse)
     {
         InitializeComponent();
+        lstLectures.ItemsSource = lectures;
         SelectedCourse = selectedCourse;
         BindingContext = this;
     }
+
+    protected override void OnAppearing()
+    {
+        LoadLectures();
+        LoadPeriod();
+    }
+
+    private void LoadPeriod()
+    {
+        lblPeriodName.Text = App.PeriodHelper.GetPeriodByID(_selectedCourse.PeriodId).Name;
+    }
+
+    private void LoadLectures()
+    {
+        var LectureList = App.LectureHelper.GetLecturesByCourseId(SelectedCourse.Id);
+
+        lectures.Clear();
+
+        foreach (Lecture lecture in LectureList)
+        {
+            lectures.Add(lecture);
+        }
+    }
+
 
     public async void EditCourseEvent(object sender, EventArgs e)
     {

@@ -1,5 +1,3 @@
-using Android.Graphics;
-
 namespace AcademiApp.Pages;
 
 public partial class AboutPage : ContentPage

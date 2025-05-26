@@ -1,4 +1,5 @@
 ﻿using AcademiApp.Helpers;
+using System.Diagnostics;
 
 namespace AcademiApp
 {
@@ -16,10 +17,10 @@ namespace AcademiApp
                 if (_db == null)
                 {
                     string path = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "academiApp.db3");
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "academiApp.db3");
                     _db = new SQLiteDatabaseHelpers(path);
                 }
+                
                 return _db;
             }
         }

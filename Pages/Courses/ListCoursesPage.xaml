@@ -46,11 +46,11 @@
                                 <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center" Wrap="Wrap">
                                     <Label Text="{Binding Name}" FontFamily="LatoBold" FontSize="20" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
                                     <Frame Padding="0" BorderColor="Transparent">
-                                        <Label Text="{Binding Period}" FontSize="12" FontFamily="LatoBold" BackgroundColor="#dbeafd" TextColor="#496cbf" Padding="10"/>
+                                        <Label Text="{Binding Period.Code}" FontSize="12" FontFamily="LatoBold" BackgroundColor="#dbeafd" TextColor="#496cbf" Padding="10"/>
                                     </Frame>
                                 </FlexLayout>
                                 <Label Text="{Binding Code, StringFormat='Código: {0}'}" TextColor="#6b6565" FontSize="16" />
-                                <Label Text="{Binding Period, StringFormat='Período: {0}'}" TextColor="#6b6565" FontSize="16" />
+                                <Label Text="{Binding Period.Name, StringFormat='Período: {0}'}" TextColor="#6b6565" FontSize="16" />
                             </VerticalStackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListCoursesPage}}, Path=ItemClickedCommand}" CommandParameter="{Binding .}"/>

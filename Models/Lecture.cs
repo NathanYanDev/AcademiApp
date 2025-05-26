@@ -14,8 +14,5 @@ namespace AcademiApp.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-
-        [Ignore]
-        public List<Course> Courses { get; set; } = new List<Course>();
     }
 }

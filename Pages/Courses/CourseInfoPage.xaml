@@ -32,7 +32,7 @@
                     </VerticalStackLayout>
                     <VerticalStackLayout>
                         <Label Text="Período" TextColor="#6b6565" FontSize="18" />
-                        <Label Text="{Binding SelectedCourse.Period}" FontSize="18" />
+                        <Label x:Name="lblPeriodName" FontSize="18" />
                     </VerticalStackLayout>
                 </FlexLayout>
                 <Label Text="Descrição" TextColor="#6b6565" FontSize="18" />
@@ -44,6 +44,20 @@
                 </FlexLayout>
 
                 <Label Text="Disciplinas vinculadas" FontSize="18" FontFamily="LatoBold" HorizontalOptions="Center" Margin="0, 15"/>
+                <ListView x:Name="lstLectures" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Margin="0,5" Padding="15">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding Name}" FontFamily="LatoBold" FontSize="20" VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding Code}" TextColor="#6b6565" FontSize="16" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </VerticalStackLayout>
         </Frame>
     </VerticalStackLayout>

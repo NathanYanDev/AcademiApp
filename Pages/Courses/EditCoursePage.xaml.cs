@@ -1,9 +1,14 @@
 namespace AcademiApp.Pages.Courses;
 using AcademiApp.Models;
+using System.Collections.ObjectModel;
 
 public partial class EditCoursesPage : ContentPage
 {
-	private Course _editCourse;
+    ObservableCollection<Period> periods = new();
+
+    ObservableCollection<Lecture> lectures = new();
+    ObservableCollection<Lecture> selectedLectures = new();
+    private Course _editCourse;
 
 	public Course EditCourse
 	{
@@ -19,29 +24,88 @@ public partial class EditCoursesPage : ContentPage
 	{
 		InitializeComponent();
 
-		EditCourse = course;
+        EditCourse = course;
+
+        pckCoursePeriod.ItemsSource = periods;
+        LoadPeriods();
+
+		lecturesCollection.ItemsSource = lectures;
+		LoadLectures();
+
+        lecturesCollection.SelectionChanged += (s, e) =>
+        {
+            selectedLectures.Clear();
+            foreach (var item in lecturesCollection.SelectedItems)
+            {
+                if (item is Lecture lecture)
+                {
+                    selectedLectures.Add(lecture);
+                }
+            }
+        };
 
 		BindingContext = this;
+    }
+
+    private void LoadPeriods()
+    {
+        var periodList = App.PeriodHelper.GetAllPeriods();
+
+        periods.Clear();
+
+        foreach (Period period in periodList)
+        {
+            periods.Add(period);
+        }
+    }
+
+	private void LoadLectures()
+	{
+		var lectureList = App.LectureHelper.GetAllLectures();
+
+		lectures.Clear();
+
+		foreach(Lecture lecture in lectureList)
+		{
+			lectures.Add(lecture);
+		}
 	}
 
-	private async void SaveEditedChanges(object sender, EventArgs e)
+    private async void SaveEditedChanges(object sender, EventArgs e)
 	{
 		try
 		{
 			Course course = new Course();
 
-            course.Id = EditCourse.Id;
-            course.Name = etrCourseName.Text;
+			course.Id = EditCourse.Id;
+			course.Name = etrCourseName.Text;
 			course.Code = etrCourseCode.Text;
 			course.Description = editorCourseDescription.Text;
 
-			if (string.IsNullOrEmpty(course.Name) || string.IsNullOrEmpty(course.Code) || string.IsNullOrEmpty(course.Description))
+            if (!(pckCoursePeriod.SelectedItem is Period selectedPeriod))
+            {
+                await DisplayAlert("Erro", "Selecione um período válido!", "OK");
+                return;
+            }
+
+            var selectedLecturesList = selectedLectures?.Cast<Lecture>().ToList();
+
+            if (selectedLecturesList == null || !selectedLecturesList.Any())
+            {
+                await DisplayAlert("Erro", "Selecione pelo menos uma disciplina!", "OK");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(course.Name) || string.IsNullOrEmpty(course.Code) || string.IsNullOrEmpty(course.Description))
 			{
 				await DisplayAlert("Erro", "Por favor preencha todos os campos", "OK");
 			}
 			else
 			{
-				App.CourseHelper.UpdateCourse(course);
+				course.Period = selectedPeriod;
+                
+
+				App.CourseHelper.UpdateCourse(course, selectedPeriod, selectedLecturesList);
 
 				await DisplayAlert("Sucesso", "Curso atualizado com sucesso", "OK");
 

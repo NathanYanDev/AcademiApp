@@ -41,10 +41,26 @@ namespace AcademiApp.Helpers
             return _conn.Table<T>().ToListAsync().Result;
         }
 
+        public T GetById<T>(int id) where T : new()
+        {
+            return _conn.FindAsync<T>(id).Result;
+        }
+
         public List<T> Search<T>(string name) where T : new()
         {
             string sql = $"SELECT * FROM {typeof(T).Name} WHERE Name LIKE '%{name}%'";
             return _conn.QueryAsync<T>(sql).Result;
+        }
+
+        public List<T> SearchByQuery<T>(string sql) where T : new()
+        {
+            return _conn.QueryAsync<T>(sql).Result;
+        }
+
+        public int DeleteCourseLecture(int courseId)
+        {
+            string sql = $"DELETE FROM CourseLecture WHERE CourseId = {courseId}";
+            return _conn.ExecuteAsync(sql).Result;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using AcademiApp.Models;
 namespace AcademiApp.Pages.Courses;
@@ -41,6 +42,7 @@ public partial class ListCoursesPage : ContentPage
 
         foreach (Course course in courseList)
         {
+			course.Period = App.PeriodHelper.GetPeriodByID(course.PeriodId);
             courses.Add(course);
         }
     }
@@ -55,7 +57,8 @@ public partial class ListCoursesPage : ContentPage
 
 		foreach (Course course in courseList)
 		{
-			courses.Add(course);
+			course.Period = App.PeriodHelper.GetPeriodByID(course.PeriodId);
+            courses.Add(course);
 		}
 	}
 }

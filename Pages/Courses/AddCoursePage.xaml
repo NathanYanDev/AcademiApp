@@ -37,8 +37,27 @@
                     x:Name="editorCourseDesc"
                 />
 
-                <Label Text="Período do curso *" FontSize="16" FontAttributes="Bold"/>
-                <Picker Margin="0,0,0,10"></Picker>
+                <Label Text="Período *" FontSize="16" FontAttributes="Bold"/>
+                <Picker Margin="0,0,0,10" x:Name="pckPeriod" Title="Selecione um período" ItemDisplayBinding="{Binding Name}"></Picker>
+                <Label Text="Disciplinas *" FontSize="16" FontAttributes="Bold"/>
+                <CollectionView x:Name="lecturesCollection" SelectionMode="Multiple" Margin="0,0,0,20" SelectedItems="{Binding selectedLectures}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <FlexLayout AlignItems="Center" Margin="0,5">
+                                <CheckBox x:Name="chkLecture"/>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}"/>
+                                            <Span Text=" - "/>
+                                            <Span Text="{Binding Code}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </FlexLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" HeightRequest="50" >
                     <Button Text="Cancelar" BackgroundColor="Transparent" BorderColor="#C8C8C8" BorderWidth="1" TextColor="#000" FontSize="16" FontAttributes="Bold"/>
                     <Button Text="Salvar alterações" FontSize="16" FontAttributes="Bold" BackgroundColor="#008236" Clicked="SaveChanges"/>

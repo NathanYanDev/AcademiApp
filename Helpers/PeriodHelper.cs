@@ -22,6 +22,18 @@ namespace AcademiApp.Helpers
             return _db.GetAll<Period>();
         }
 
+        public Period GetPeriodByID(int id)
+        {
+            Period? period = _db.GetAll<Period>().FirstOrDefault(p => p.Id == id);
+
+            if (period == null)
+            {
+                throw new Exception("Período não encontrado");
+            }
+
+            return period;
+        }
+
         public void AddPeriod(Period period)
         {
             _db.Insert(period);
@@ -36,6 +48,7 @@ namespace AcademiApp.Helpers
         {
             _db.Delete<Period>(id);
         }
+
         public List<Period> SearchPeriodByName(string name)
         {
             return _db.Search<Period>(name);
