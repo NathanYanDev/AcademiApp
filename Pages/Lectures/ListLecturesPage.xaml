@@ -25,17 +25,23 @@
         </FlexLayout>
     </Shell.TitleView>
 
-    <VerticalStackLayout Padding="10">
+    <Grid Padding="10" RowDefinitions="Auto,*">
         <Frame 
-            CornerRadius="10" 
-            HeightRequest="50"
-            Margin="0,0,0,10"
-            Padding="5"
-        >
+        Grid.Row="0"
+        CornerRadius="10" 
+        HeightRequest="50"
+        Margin="0,0,0,10"
+        Padding="5">
             <SearchBar x:Name="searchBar" Placeholder="Pesquise uma disciplina..." TextChanged="searchLecture" />
         </Frame>
 
-        <ListView x:Name="lstLectures" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+        <ListView
+        Grid.Row="1"
+        x:Name="lstLectures"
+        HasUnevenRows="True"
+        SeparatorVisibility="None"
+        CachingStrategy="RecycleElement"
+        SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -52,5 +58,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

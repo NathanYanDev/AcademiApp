@@ -32,18 +32,6 @@ public partial class EditCoursesPage : ContentPage
 		lecturesCollection.ItemsSource = lectures;
 		LoadLectures();
 
-        lecturesCollection.SelectionChanged += (s, e) =>
-        {
-            selectedLectures.Clear();
-            foreach (var item in lecturesCollection.SelectedItems)
-            {
-                if (item is Lecture lecture)
-                {
-                    selectedLectures.Add(lecture);
-                }
-            }
-        };
-
 		BindingContext = this;
     }
 
@@ -67,8 +55,13 @@ public partial class EditCoursesPage : ContentPage
 
 		foreach(Lecture lecture in lectureList)
 		{
-			lectures.Add(lecture);
-		}
+            if (EditCourse.Lectures != null && EditCourse.Lectures.Any(l => l.Id == lecture.Id))
+                lecture.IsSelected = true;
+            else
+                lecture.IsSelected = false;
+
+            lectures.Add(lecture);
+        }
 	}
 
     private async void SaveEditedChanges(object sender, EventArgs e)
@@ -88,7 +81,7 @@ public partial class EditCoursesPage : ContentPage
                 return;
             }
 
-            var selectedLecturesList = selectedLectures?.Cast<Lecture>().ToList();
+            var selectedLecturesList = lectures.Where(l => l.IsSelected).ToList();
 
             if (selectedLecturesList == null || !selectedLecturesList.Any())
             {

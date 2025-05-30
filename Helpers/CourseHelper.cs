@@ -49,6 +49,8 @@ namespace AcademiApp.Helpers
 
         public void UpdateCourse(Course course, Period period, List<Lecture> lectures)
         {
+            course.PeriodId = period.Id;
+
             _db.Update(course);
 
             _db.DeleteCourseLecture(course.Id);
@@ -82,7 +84,7 @@ namespace AcademiApp.Helpers
         {
             var course = _db.SearchByQuery<Course>($"SELECT * FROM Course WHERE Id = {id}").FirstOrDefault();
 
-            course.Period = _db.SearchByQuery<Period>($"SELECT * FROM Period WHERE Id = {course.PeriodId}").FirstOrDefault();
+            course.Period = _db.GetById<Period>(course.PeriodId);
 
             course.Lectures = _db.SearchByQuery<Lecture>($"SELECT l.* FROM Lecture l " +
                                              $"JOIN CourseLecture cl ON l.Id = cl.LectureId " +

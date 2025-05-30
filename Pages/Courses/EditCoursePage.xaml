@@ -47,7 +47,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <FlexLayout AlignItems="Center" Margin="0,5">
-                                <CheckBox x:Name="chkLecture"/>
+                                <CheckBox x:Name="chkLecture" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>

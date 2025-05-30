@@ -26,17 +26,23 @@
     </Shell.TitleView>
 
 
-    <VerticalStackLayout Padding="10">
+    <Grid RowDefinitions="Auto,*" Padding="10">
         <Frame 
-            CornerRadius="10" 
-            HeightRequest="50"
-            Margin="0,0,0,10"
-            Padding="5"
-        >
+        Grid.Row="0"
+        CornerRadius="10" 
+        HeightRequest="50"
+        Margin="0,0,0,10"
+        Padding="5">
             <SearchBar x:Name="searchBar" Placeholder="Pesquise um período..." TextChanged="searchPeriod" />
         </Frame>
 
-        <ListView x:Name="lstPeriods" HasUnevenRows="True" SeparatorVisibility="None" CachingStrategy="RecycleElement" SelectionMode="None">
+        <ListView
+        Grid.Row="1"
+        x:Name="lstPeriods"
+        HasUnevenRows="True"
+        SeparatorVisibility="None"
+        CachingStrategy="RecycleElement"
+        SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -53,5 +59,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

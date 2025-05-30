@@ -18,18 +18,6 @@ public partial class AddCoursesPage : ContentPage
 		pckPeriod.ItemsSource = periods;
 
         lecturesCollection.ItemsSource = lectures;
-
-        lecturesCollection.SelectionChanged += (s, e) =>
-        {
-            selectedLectures.Clear();
-            foreach (var item in lecturesCollection.SelectedItems)
-            {
-                if (item is Lecture lecture)
-                {
-                    selectedLectures.Add(lecture);
-                }
-            }
-        };
     }
 
 	protected override void OnAppearing()
@@ -91,7 +79,7 @@ public partial class AddCoursesPage : ContentPage
                 return;
             }
 
-            var selectedLecturesList = selectedLectures?.Cast<Lecture>().ToList();
+            var selectedLecturesList = lectures.Where(l => l.IsSelected).ToList();
 
             if (selectedLecturesList == null || !selectedLecturesList.Any())
             {
@@ -117,4 +105,9 @@ public partial class AddCoursesPage : ContentPage
 			await DisplayAlert("Erro", ex.Message, "OK");
 		}
 	}
+
+    private void chkLecture_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+
+    }
 }
